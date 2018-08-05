@@ -156,6 +156,7 @@ function addRecipe(firstIngredient: Command, secondIngredient: Command, meldGrou
 
 }
 
+// ATTACK COMMANDS
 // Blitz
 addRecipe(Command.QuickBlitz, Command.SlotEdge, MeldGroup.O, [[Command.Blitz, 90], [Command.ArsArcanum, 10]], [Character.Ventus]);
 addRecipe(Command.QuickBlitz, Command.SlotEdge, MeldGroup.O, Command.Blitz, [Character.Terra, Character.Aqua]);
@@ -237,14 +238,14 @@ addRecipe(Command.FireStrike, Command.Aerora, MeldGroup.C, Command.AerialSlam, [
 addRecipe(Command.FireStrike, Command.Aerora, MeldGroup.C, [[Command.AerialSlam, 90], [Command.ArsArcanum, 10]], [Character.Ventus]);
 
 // Ars Solum
-// RARE MELD ONLY
+// RARE - Stun Edge (5%), Chaos Blade (20%), Zantetsuken (20%), Thunder Surge (5%), Stun Edge (5%)
 
 // Ars Arcanum
-// LOTS OF RARE MELDS
+// RARE - Blitz (10%), Aerial Slam (10%), Blizzard Edge (5%), Slot Edge (5%)
 addRecipe(Command.Blitz, Command.AerialSlam, MeldGroup.F, Command.ArsArcanum, [Character.Ventus]);
 
 // Time Splicer
-// RARE MELDS
+// RARE - Blitz (10%), Stop Barrier (20%)
 addRecipe(Command.AerialSlam, Command.Stopga, MeldGroup.F, Command.TimeSplicer, [Character.Ventus, Character.Aqua]);
 
 // Poison Edge
@@ -336,9 +337,286 @@ addRecipe(Command.BrutalBlast, Command.BrutalBlast, MeldGroup.N, [[Command.GeoIm
 addRecipe(Command.DarkHaze, Command.Warp, MeldGroup.B, Command.Sacrifice, [Character.Terra]);
 addRecipe(Command.PoisonEdge, Command.Warp, MeldGroup.D, Command.Sacrifice, [Character.Terra]);
 
-// ORPHANS
-addRecipe(Command.ThunderSurge, Command.DodgeRoll, MeldGroup.P, [[???], [Command.SparkRaid, 20]], [Character.Ventus]);
-addRecipe(Command.Thundaga, Command.DodgeRoll, MeldGroup.L, [[???], [Command.SparkRaid, 20]], [Character.Ventus]);
-addRecipe(Command.StunBlock, Command.DodgeRoll, MeldGroup.L, [[???], [Command.SparkRaid, 20]], [Character.Ventus]);
+// MAGIC COMMANDS
+// Fira
+addRecipe(Command.FireDash, Command.Fire, MeldGroup.D, Command.Fira);
+addRecipe(Command.FireStrike, Command.Fire, MeldGroup.D, Command.Fira);
+addRecipe(Command.Fire, Command.Fire, MeldGroup.A, Command.Fira);
+addRecipe(Command.Fire, Command.Ignite, MeldGroup.C, Command.Fira);
 
-addRecipe(Command.Stopga, Command.Barrier, MeldGroup.C, [[???], [Command.TimeSplicer, 20]], [Character.Aqua]);
+// Firaga
+addRecipe(Command.FireDash, Command.Fira, MeldGroup.D, Command.Firaga, [Character.Terra, Character.Ventus]);
+addRecipe(Command.FireDash, Command.Fira, MeldGroup.D, [[Command.Firaga, 90], [Command.RagingStorm, 10]], [Character.Aqua]);
+addRecipe(Command.Fire, Command.Fira, MeldGroup.A, Command.Firaga, [Character.Terra, Character.Ventus]);
+addRecipe(Command.Fire, Command.Fira, MeldGroup.A, [[Command.Firaga, 90], [Command.RagingStorm, 10]], [Character.Aqua]);
+addRecipe(Command.Fira, Command.Fira, MeldGroup.B, Command.Firaga, [Character.Terra, Character.Ventus]);
+addRecipe(Command.Fira, Command.Fira, MeldGroup.B, [[Command.Firaga, 90], [Command.RagingStorm, 10]], [Character.Aqua]);
+
+// Dark Firaga
+addRecipe(Command.DarkHaze, Command.Firaga, MeldGroup.D, Command.DarkFiraga, [Character.Terra]);
+addRecipe(Command.Firaga, Command.Blackout, MeldGroup.B, Command.DarkFiraga, [Character.Terra]);
+
+// Fission Firaga
+addRecipe(Command.Fira, Command.Aeroga, MeldGroup.A, Command.FissionFiraga, [Character.Terra, Character.Ventus]);
+addRecipe(Command.Fira, Command.Aeroga, MeldGroup.A, [[Command.FissionFiraga, 80], [Command.FiragaBurst, 20]], [Character.Aqua]);
+addRecipe(Command.Firaga, Command.Aerora, MeldGroup.A, Command.FissionFiraga, [Character.Terra, Character.Ventus]);
+addRecipe(Command.Firaga, Command.Aerora, MeldGroup.A, [[Command.FissionFiraga, 80], [Command.FiragaBurst, 20]], [Character.Aqua]);
+addRecipe(Command.Firaga, Command.Aeroga, MeldGroup.B, Command.FissionFiraga, [Character.Terra, Character.Ventus]);
+addRecipe(Command.Firaga, Command.Aeroga, MeldGroup.B, [[Command.FissionFiraga, 80], [Command.FiragaBurst, 20]], [Character.Aqua]);
+
+// Triple Firaga
+addRecipe(Command.Fira, Command.Firaga, MeldGroup.A, [[Command.TripleFiraga, 90], [Command.RagingStorm, 10]], [Character.Aqua]);
+addRecipe(Command.Blitz, Command.Firaga, MeldGroup.D, [[Command.TripleFiraga, 90], [Command.RagingStorm, 10]], [Character.Aqua]);
+addRecipe(Command.Firaga, Command.Firaga, MeldGroup.B, [[Command.TripleFiraga, 90], [Command.RagingStorm, 10]], [Character.Aqua]);
+
+// Crawling Fire
+addRecipe(Command.Firaga, Command.Slow, MeldGroup.A, Command.CrawlingFire, [Character.Terra, Character.Ventus]);
+addRecipe(Command.Firaga, Command.Slow, MeldGroup.A, [[Command.CrawlingFire, 80], [Command.FiragaBurst, 20]], [Character.Aqua]);
+addRecipe(Command.Firaga, Command.Stopra, MeldGroup.D, Command.CrawlingFire, [Character.Terra, Character.Ventus]);
+addRecipe(Command.Firaga, Command.Stopra, MeldGroup.D, [[Command.CrawlingFire, 80], [Command.FiragaBurst, 20]], [Character.Aqua]);
+addRecipe(Command.Firaga, Command.Stopga, MeldGroup.B, Command.CrawlingFire, [Character.Terra, Character.Ventus]);
+addRecipe(Command.Firaga, Command.Stopga, MeldGroup.B, [[Command.CrawlingFire, 80], [Command.FiragaBurst, 20]], [Character.Aqua]);
+
+// Blizzara
+addRecipe(Command.StrikeRaid, Command.Blizzard, MeldGroup.G, Command.Blizzara);
+addRecipe(Command.BlizzardEdge, Command.Blizzard, MeldGroup.G, Command.Blizzara);
+addRecipe(Command.Blizzard, Command.Blizzard, MeldGroup.E, Command.Blizzara);
+addRecipe(Command.Blizzard, Command.Aero, MeldGroup.H, Command.Blizzara);
+
+// Blizzaga
+addRecipe(Command.BlizzardEdge, Command.Blizzara, MeldGroup.G, Command.Blizzaga);
+addRecipe(Command.Blizzard, Command.Blizzara, MeldGroup.E, Command.Blizzaga);
+addRecipe(Command.Blizzara, Command.Blizzara, MeldGroup.F, Command.Blizzaga);
+
+// Triple Blizzaga
+addRecipe(Command.Blitz, Command.Blizzaga, MeldGroup.G, Command.TripleBlizzaga, [Character.Aqua]);
+addRecipe(Command.Blizzara, Command.Blizzaga, MeldGroup.E, Command.TripleBlizzaga, [Character.Aqua]);
+addRecipe(Command.Blizzaga, Command.Blizzaga, MeldGroup.F, Command.TripleBlizzaga, [Character.Aqua]);
+
+// Thundara
+addRecipe(Command.StunEdge, Command.Thunder, MeldGroup.K, Command.Thundara);
+addRecipe(Command.Thunder, Command.Thunder, MeldGroup.I, Command.Thundara);
+addRecipe(Command.ZeroGravity, Command.Magnet, MeldGroup.L, Command.Thundara);
+
+// Thundaga
+addRecipe(Command.BindingStrike, Command.Thundara, MeldGroup.K, [[Command.Thundaga, 90], [Command.LightningRay, 10]]);
+addRecipe(Command.Thunder, Command.Thundara, MeldGroup.I, [[Command.Thundaga, 90], [Command.LightningRay, 10]]);
+addRecipe(Command.Thundara, Command.Thundara, MeldGroup.J, [[Command.Thundaga, 90], [Command.LightningRay, 10]]);
+
+// Thundaga Shot
+addRecipe(Command.StrikeRaid, Command.Thundaga, MeldGroup.I, [[Command.ThundagaShot, 85], [Command.MeteorShower, 15]], [Character.Aqua]);
+addRecipe(Command.FreezeRaid, Command.Thundaga, MeldGroup.E, [[Command.ThundagaShot, 85], [Command.MeteorShower, 15]], [Character.Aqua]);
+addRecipe(Command.Firaga, Command.Thundaga, MeldGroup.A, [[Command.ThundagaShot, 85], [Command.MeteorShower, 15]], [Character.Aqua]);
+
+// Cura
+addRecipe(Command.Thunder, Command.Cure, MeldGroup.I, Command.Cura);
+addRecipe(Command.Cure, Command.Cure, MeldGroup.M, Command.Cura);
+addRecipe(Command.Cure, Command.Aero, MeldGroup.O, Command.Cura);
+
+// Curaga
+addRecipe(Command.Cure, Command.Cura, MeldGroup.M, Command.Curaga);
+addRecipe(Command.Cura, Command.Cura, MeldGroup.N, Command.Curaga);
+
+// Mine Shield
+addRecipe(Command.Fira, Command.ZeroGravity, MeldGroup.A, Command.MineShield);
+addRecipe(Command.Ignite, Command.Stop, MeldGroup.D, Command.MineShield);
+addRecipe(Command.Fira, Command.Block, MeldGroup.C, Command.MineShield, [Character.Terra, Character.Ventus]);
+addRecipe(Command.Stopra, Command.Block, MeldGroup.M, Command.MineShield, [Character.Terra, Character.Ventus]);
+
+// Mine Square
+addRecipe(Command.Fira, Command.Stop, MeldGroup.A, Command.MineSquare);
+addRecipe(Command.Aerora, Command.Ignite, MeldGroup.D, Command.MineSquare);
+addRecipe(Command.Fira, Command.Barrier, MeldGroup.C, Command.MineSquare, [Character.Aqua]);
+addRecipe(Command.Stopra, Command.Barrier, MeldGroup.M, Command.MineSquare, [Character.Aqua]);
+
+// Seeker Mine
+addRecipe(Command.MineShield, Command.MineSquare, MeldGroup.B, Command.SeekerMine, [Character.Aqua]);
+addRecipe(Command.MineShield, Command.Magnega, MeldGroup.C, Command.SeekerMine, [Character.Aqua]);
+addRecipe(Command.MineSquare, Command.Magnega, MeldGroup.D, Command.SeekerMine, [Character.Aqua]);
+
+// Zero Gravira
+addRecipe(Command.Thunder, Command.ZeroGravity, MeldGroup.I, Command.ZeroGravira, [Character.Ventus, Character.Aqua]);
+addRecipe(Command.Thunder, Command.ZeroGravity, MeldGroup.I, [[Command.ZeroGravira, 90], [Command.Warp, 10]], [Character.Terra]);
+addRecipe(Command.ZeroGravity, Command.ZeroGravity, MeldGroup.M, Command.ZeroGravira, [Character.Ventus, Character.Aqua]);
+addRecipe(Command.ZeroGravity, Command.ZeroGravity, MeldGroup.M, [[Command.ZeroGravira, 90], [Command.Warp, 10]], [Character.Terra]);
+addRecipe(Command.Magnet, Command.Aero, MeldGroup.P, Command.ZeroGravira, [Character.Ventus, Character.Aqua]);
+addRecipe(Command.Magnet, Command.Aero, MeldGroup.P, [[Command.ZeroGravira, 90], [Command.Warp, 10]], [Character.Terra]);
+
+// Zero Graviga
+addRecipe(Command.Thundara, Command.ZeroGravira, MeldGroup.I, Command.ZeroGraviga, [Character.Ventus, Character.Aqua]);
+addRecipe(Command.Thundara, Command.ZeroGravira, MeldGroup.I, [[Command.ZeroGraviga, 80], [Command.Warp, 20]], [Character.Terra]);
+addRecipe(Command.ZeroGravity, Command.ZeroGravira, MeldGroup.M, Command.ZeroGraviga, [Character.Ventus, Character.Aqua]);
+addRecipe(Command.ZeroGravity, Command.ZeroGravira, MeldGroup.M, [[Command.ZeroGraviga, 80], [Command.Warp, 20]], [Character.Terra]);
+addRecipe(Command.ZeroGravira, Command.ZeroGravira, MeldGroup.N, Command.ZeroGraviga, [Character.Ventus, Character.Aqua]);
+addRecipe(Command.ZeroGravira, Command.ZeroGravira, MeldGroup.N, [[Command.ZeroGraviga, 80], [Command.Warp, 20]], [Character.Terra]);
+
+// Magnera
+addRecipe(Command.StunEdge, Command.Magnet, MeldGroup.K, Command.Magnera);
+addRecipe(Command.Thunder, Command.Magnet, MeldGroup.I, Command.Magnera);
+addRecipe(Command.Magnet, Command.Magnet, MeldGroup.M, Command.Magnera);
+
+// Magnega
+addRecipe(Command.Magnet, Command.Magnera, MeldGroup.I, Command.Magnega);
+addRecipe(Command.Magnera, Command.Magnera, MeldGroup.J, Command.Magnega);
+
+// Munny Magnet
+addRecipe(Command.WishingEdge, Command.Magnera, MeldGroup.K, Command.MunnyMagnet, [Character.Aqua]);
+addRecipe(Command.Thundara, Command.Magnera, MeldGroup.I, Command.MunnyMagnet, [Character.Aqua]);
+
+// Energy Magnet
+addRecipe(Command.Cure, Command.Magnera, MeldGroup.M, Command.EnergyMagnet, [Character.Aqua]);
+addRecipe(Command.Cura, Command.Magnera, MeldGroup.N, Command.EnergyMagnet, [Character.Aqua]);
+
+// D-Link Magnet
+addRecipe(Command.ZeroGravira, Command.Magnera, MeldGroup.L, Command.DLinkMagnet, [Character.Aqua]);
+addRecipe(Command.Magnera, Command.Stopra, MeldGroup.I, Command.DLinkMagnet, [Character.Aqua]);
+
+// Aerora
+addRecipe(Command.QuickBlitz, Command.Aero, MeldGroup.G, Command.Aerora, [Character.Terra, Character.Aqua]);
+addRecipe(Command.QuickBlitz, Command.Aero, MeldGroup.G, [[Command.Aerora, 95], [Command.Tornado, 5]], [Character.Ventus]);
+addRecipe(Command.Thunder, Command.Aero, MeldGroup.I, Command.Aerora, [Character.Terra, Character.Aqua]);
+addRecipe(Command.Thunder, Command.Aero, MeldGroup.I, [[Command.Aerora, 95], [Command.Tornado, 5]], [Character.Ventus]);
+addRecipe(Command.Aero, Command.Aero, MeldGroup.E, Command.Aerora, [Character.Terra, Character.Aqua]);
+addRecipe(Command.Aero, Command.Aero, MeldGroup.E, [[Command.Aerora, 95], [Command.Tornado, 5]], [Character.Ventus]);
+
+// Aeroga
+addRecipe(Command.QuickBlitz, Command.Aerora, MeldGroup.O, Command.Aeroga, [Character.Terra, Character.Aqua]);
+addRecipe(Command.QuickBlitz, Command.Aerora, MeldGroup.O, [[Command.Aeroga, 90], [Command.Tornado, 10]], [Character.Ventus]);
+addRecipe(Command.Aero, Command.Aerora, MeldGroup.M, Command.Aeroga, [Character.Terra, Character.Aqua]);
+addRecipe(Command.Aero, Command.Aerora, MeldGroup.M, [[Command.Aeroga, 90], [Command.Tornado, 10]], [Character.Ventus]);
+addRecipe(Command.Aerora, Command.Aerora, MeldGroup.N, Command.Aeroga, [Character.Terra, Character.Aqua]);
+addRecipe(Command.Aerora, Command.Aerora, MeldGroup.N, [[Command.Aeroga, 90], [Command.Tornado, 10]], [Character.Ventus]);
+
+// Warp
+// RARE - Zero Gravira (10%), Zero Graviga (20%)
+
+// Faith
+addRecipe(Command.WindRaid, Command.BreakTime, MeldGroup.N, Command.Faith, [Character.Ventus]);
+
+// Deep Freeze
+addRecipe(Command.FreezeRaid, Command.Blizzaga, MeldGroup.G, Command.DeepFreeze);
+addRecipe(Command.BindingStrike, Command.Blizzaga, MeldGroup.H, Command.DeepFreeze);
+addRecipe(Command.Blizzaga, Command.TripleBlizzaga, MeldGroup.F, Command.DeepFreeze, [Character.Aqua]);
+
+// Glacier
+addRecipe(Command.Blizzaga, Command.DeepFreeze, MeldGroup.E, Command.Glacier, [Character.Aqua]);
+addRecipe(Command.TripleBlizzaga, Command.DeepFreeze, MeldGroup.F, Command.Glacier, [Character.Aqua]);
+
+// Ice Barrage
+addRecipe(Command.Blizzaga, Command.MineShield, MeldGroup.F, Command.IceBarrage, [Character.Aqua]);
+addRecipe(Command.Blizzaga, Command.MineSquare, MeldGroup.H, Command.IceBarrage, [Character.Aqua]);
+
+// Firaga Burst
+// RARE - Fission Firaga (20%), Crawling Fire (20%)
+
+// Raging Storm
+// RARE - Firewheel (10%), Firaga (10%), Triple Firaga (10%)
+addRecipe(Command.FissionFiraga, Command.FiragaBurst, MeldGroup.B, Command.RagingStorm, [Character.Aqua]);
+
+// Mega Flare
+addRecipe(Command.FissionFiraga, Command.CrawlingFire, MeldGroup.B, Command.MegaFlare);
+
+// Quake
+// RARE - Brutal Blast (30%), Geo Impact (30%)
+addRecipe(Command.BrutalBlast, Command.ZeroGraviga, MeldGroup.B, [[Command.Quake, 90], [Command.Meteor, 10]], [Character.Terra]);
+addRecipe(Command.BrutalBlast, Command.Magnega, MeldGroup.C, [[Command.Quake, 90], [Command.Meteor, 10]], [Character.Terra]);
+
+// Meteor
+// RARE - Quake (10%)
+addRecipe(Command.GeoImpact, Command.Quake, MeldGroup.B, Command.Meteor, [Character.Terra]);
+
+// Tornado
+// RARE - Aerora (5%), Aeroga (10%)
+addRecipe(Command.Magnega, Command.Aeroga, MeldGroup.N, Command.Tornado, [Character.Ventus]);
+
+// Transcendence
+addRecipe(Command.MagnetSpiral, Command.ZeroGravira, MeldGroup.J, Command.Transcendence);
+
+// Mini
+addRecipe(Command.Magnega, Command.Magnega, MeldGroup.J, Command.Mini);
+addRecipe(Command.Magnega, Command.Bind, MeldGroup.I, Command.Mini);
+addRecipe(Command.Magnera, Command.Warp, MeldGroup.N, Command.Mini, [Character.Terra]);
+
+// Blackout
+addRecipe(Command.ZeroGravity, Command.Confuse, MeldGroup.M, Command.Blackout);
+addRecipe(Command.ZeroGravira, Command.Confuse, MeldGroup.N, Command.Blackout);
+addRecipe(Command.ZeroGravira, Command.Poison, MeldGroup.P, Command.Blackout);
+
+// Ignite
+addRecipe(Command.Fire, Command.Bind, MeldGroup.A, Command.Ignite);
+addRecipe(Command.Fira, Command.Bind, MeldGroup.C, Command.Ignite);
+
+// Stopra
+addRecipe(Command.Slow, Command.Slow, MeldGroup.L, Command.Stopra);
+addRecipe(Command.Slow, Command.Stop, MeldGroup.K, Command.Stopra);
+
+// Stopga
+addRecipe(Command.Stop, Command.Stopra, MeldGroup.I, Command.Stopga);
+addRecipe(Command.Stopra, Command.Stopra, MeldGroup.J, Command.Stopga);
+
+// ACTION COMMANDS
+// Homing Slide
+addRecipe(Command.SlidingDash, Command.Magnera, MeldGroup.P, Command.HomingSlide, [Character.Ventus, Character.Aqua]);
+addRecipe(Command.SlidingDash, Command.AirSlide, MeldGroup.C, Command.HomingSlide, [Character.Ventus, Character.Aqua]);
+addRecipe(Command.Magnet, Command.AirSlide, MeldGroup.L, Command.HomingSlide, [Character.Ventus, Character.Aqua]);
+
+// Thunder Roll
+addRecipe(Command.ThunderSurge, Command.DodgeRoll, MeldGroup.P, [[Command.ThunderRoll, 80], [Command.SparkRaid, 20]], [Character.Ventus]);
+addRecipe(Command.Thundaga, Command.DodgeRoll, MeldGroup.L, [[Command.ThunderRoll, 80], [Command.SparkRaid, 20]], [Character.Ventus]);
+addRecipe(Command.StunBlock, Command.DodgeRoll, MeldGroup.L, [[Command.ThunderRoll, 80], [Command.SparkRaid, 20]], [Character.Ventus]);
+
+// Firewheel
+addRecipe(Command.Firaga, Command.Cartwheel, MeldGroup.B, Command.Firewheel, [Character.Aqua]);
+addRecipe(Command.FissionFiraga, Command.Cartwheel, MeldGroup.B, Command.Firewheel, [Character.Aqua]);
+addRecipe(Command.FireSurge, Command.Cartwheel, MeldGroup.C, [[Command.Firewheel, 90], [Command.RagingStorm, 10]], [Character.Aqua]);
+
+// Ice Slide
+addRecipe(Command.BlizzardEdge, Command.AirSlide, MeldGroup.F, Command.IceSlide);
+addRecipe(Command.Blizzaga, Command.AirSlide, MeldGroup.H, Command.IceSlide);
+
+// Fire Glide
+addRecipe(Command.FireSurge, Command.Glide, MeldGroup.C, Command.FireGlide, [Character.Ventus]);
+addRecipe(Command.Firaga, Command.Glide, MeldGroup.B, Command.FireGlide, [Character.Ventus]);
+
+// Renewal Block
+addRecipe(Command.Curaga, Command.Block, MeldGroup.P, Command.RenewalBlock, [Character.Terra, Character.Ventus]);
+addRecipe(Command.Esuna, Command.Block, MeldGroup.C, Command.RenewalBlock, [Character.Terra, Character.Ventus]);
+
+// Stun Block
+addRecipe(Command.StunEdge, Command.Block, MeldGroup.L, Command.StunBlock, [Character.Terra, Character.Ventus]);
+addRecipe(Command.Thundaga, Command.Block, MeldGroup.I, Command.StunBlock, [Character.Terra, Character.Ventus]);
+
+// Poison Block
+addRecipe(Command.PoisonEdge, Command.Block, MeldGroup.H, [[Command.PoisonBlock, 80], [Command.BioBarrage, 20]], [Character.Terra, Character.Ventus]);
+addRecipe(Command.Poison, Command.Block, MeldGroup.P, [[Command.PoisonBlock, 80], [Command.BioBarrage, 20]], [Character.Terra, Character.Ventus]);
+
+// Renewal Barrier
+addRecipe(Command.Curaga, Command.Barrier, MeldGroup.P, Command.RenewalBarrier, [Character.Aqua]);
+addRecipe(Command.Esuna, Command.Barrier, MeldGroup.N, Command.RenewalBarrier, [Character.Aqua]);
+
+// Confuse Barrier
+addRecipe(Command.ConfusionStrike, Command.Barrier, MeldGroup.C, Command.ConfuseBarrier, [Character.Aqua]);
+addRecipe(Command.Confuse, Command.Barrier, MeldGroup.L, Command.ConfuseBarrier, [Character.Aqua]);
+
+// Stop Barrier
+addRecipe(Command.Stopga, Command.Barrier, MeldGroup.C, [[Command.StopBarrier, 80], [Command.TimeSplicer, 20]], [Character.Aqua]);
+
+// Payback Fang
+addRecipe(Command.SlidingDash, Command.CounterHammer, MeldGroup.P, Command.PaybackFang, [Character.Terra]);
+
+// Payback Raid
+addRecipe(Command.SlidingDash, Command.StrikeRaid, MeldGroup.P, Command.PaybackRaid, [Character.Ventus]);
+
+// Payback Surge
+addRecipe(Command.SlidingDash, Command.FireSurge, MeldGroup.C, Command.PaybackSurge, [Character.Aqua]);
+addRecipe(Command.SlidingDash, Command.ThunderSurge, MeldGroup.L, Command.PaybackSurge, [Character.Aqua]);
+
+// SHOTLOCK COMMANDS
+// Lightning Ray
+// RARE - Magic Hour (10%), Sonic Blade (10%), Thundaga (10%)
+
+// Meteor Shower
+// RARE - Thundaga Shot (15%)
+
+// BioBarrage
+// RARE - Poison Edge (5%), Poison Block (20%)
