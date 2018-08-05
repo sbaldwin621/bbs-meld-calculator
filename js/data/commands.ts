@@ -179,6 +179,19 @@ export function getRecipesForIngredient(character: Character, ingredient: Comman
   return recipes[character].filter(r => r.first == ingredient || r.second == ingredient);
 }
 
+export function getIngredientsForCharacter(character: Character) : Command[] {
+  const commandSet = new Set<Command>();
+  for (const {first, second} of recipes[character]) {
+    commandSet.add(first);
+    commandSet.add(second);
+  }
+
+  const commands = Array.from(commandSet);
+  commands.sort();
+
+  return commands;
+}
+
 // Build recipe graph
 function addRecipe(first: Command, second: Command, meldGroup: MeldGroup, results: [Command, number][] | Command, characters: Character[] = [Character.Terra, Character.Ventus, Character.Aqua]) {
   for (const character of characters) {
