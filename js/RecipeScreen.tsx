@@ -3,43 +3,47 @@ import { View, Text, Picker, StyleSheet, FlatList, ListRenderItemInfo } from 're
 import { NavigationScreenProps, NavigationScreenConfigProps } from 'react-navigation';
 import RNPickerSelect from 'react-native-picker-select';
 
-import { getIngredientsForCharacter, Character, Command, Recipe, getRecipesForIngredient } from './data/commands';
+import { getIngredientsForCharacter, Character, Command, Recipe, getRecipesForIngredient, getRecipesForResult } from './data/commands';
 import RecipeList from './RecipeList';
 
-export interface ByIngredientParams {
+type RecipeScreenProps = NavigationScreenProps<{
   character: Character
-}
+}>;
 
-type ByIngredientProps = NavigationScreenProps<ByIngredientParams>;
-
-interface ByIngredientState {
+interface RecipeScreenState {
   pickerItems: {label: string, value: Command}[],
-  selected?: Command,
-  recipes: Recipe[]
+  command: Command | null
 }
 
-export default class ByIngredientScreen extends React.Component<ByIngredientProps, ByIngredientState> {
+export default class RecipeScreen extends React.Component<RecipeScreenProps, RecipeScreenState> {
   static navigationOptions = (props: NavigationScreenConfigProps) => ({
-    title: 'By Ingredient'
+    title: props.navigation.getParam('character')
   })
 
-  constructor(props: ByIngredientProps, state: {}) {
+  constructor(props: RecipeScreenProps, state: {}) {
     super(props, state);
     
     const character = this.props.navigation.getParam('character');
     const ingredients = getIngredientsForCharacter(character);
     const pickerItems = ingredients.map(i => ({label: i, value: i}));
 
-    this.state = {pickerItems, recipes: []};
+    this.state = {pickerItems, command: null};
   }
 
   private _onPickerChange(command: Command) {
-    const recipes = getRecipesForIngredient(this.props.navigation.getParam('character'), command);
-    this.setState({...this.state, selected: command, recipes});
+    const character = this.props.navigation.getParam('character');
+    const meldToRecipes = getRecipesForIngredient(character, command);
+    const meldFromRecipes = getRecipesForResult(character, command);
+    this.setState({...this.state, command});
+  }
+
+  private _onPressCommand(command: Command) {
+    this._onPickerChange(command);
   }
 
   render() {
-    const {pickerItems, recipes} = this.state;
+    const character = this.props.navigation.getParam('character');
+    const {pickerItems, command} = this.state;
 
     return (
       <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
@@ -47,11 +51,14 @@ export default class ByIngredientScreen extends React.Component<ByIngredientProp
           items={pickerItems}
           placeholder={{label: 'Select a command...'}}
           onValueChange={(value) => this._onPickerChange(value)}
+          value={command}
           style={{...pickerStyles}}
           />
         <RecipeList
           style={{width: '100%', flex: 1}}
-          recipes={recipes}
+          character={character}
+          command={command}
+          onPressCommand={command => this._onPressCommand(command)}
           />
       </View>
     );

@@ -16,19 +16,19 @@ export default class HomeScreen extends React.Component<NavigationScreenProps<{}
         <Text>Select Character</Text>
         <Button
           title="Terra"
-          onPress={() => this.props.navigation.navigate(Screen.Character, {
+          onPress={() => this.props.navigation.navigate(Screen.Recipe, {
             character: Character.Terra
           })}
           />
         <Button
           title="Ventus"
-          onPress={() => this.props.navigation.navigate(Screen.Character, {
+          onPress={() => this.props.navigation.navigate(Screen.Recipe, {
             character: Character.Ventus
           })}
           />
         <Button
           title="Aqua"
-          onPress={() => this.props.navigation.navigate(Screen.Character, {
+          onPress={() => this.props.navigation.navigate(Screen.Recipe, {
             character: Character.Aqua
           })}
           />

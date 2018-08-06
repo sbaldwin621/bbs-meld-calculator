@@ -1,24 +1,38 @@
 import * as React from 'react';
-import { View, ViewProps, StyleSheet, Text, FlatList, ListRenderItemInfo } from 'react-native';
+import { View, ViewProps, StyleSheet, Button, Text, SectionList, ListRenderItemInfo, SectionListData, TouchableOpacity } from 'react-native';
 
-import { Recipe } from './data/commands';
+import { Recipe, Command, getRecipesForIngredient, Character, getRecipesForResult } from './data/commands';
 import { groups, Crystal } from './data/abilities';
 
 interface RecipeListProps extends ViewProps {
-  recipes: Recipe[]
+  character: Character,
+  command: Command | null,
+  onPressCommand: (command: Command) => void
 }
 
 export default class RecipeList extends React.Component<RecipeListProps> {
   render() {
-    const { recipes } = this.props;
-        
+    const { character, command, onPressCommand } = this.props;   
+
+    const meldFromRecipes = command != null ? getRecipesForResult(character, command) : [];
+    const meldToRecipes = command != null ? getRecipesForIngredient(character, command) : [];
+
     const _renderItem = (info: ListRenderItemInfo<Recipe>) => {
       const { item } = info;
       const group = groups[item.meldGroup];
 
       return (
         <View style={{padding: 10}}>
-          <Text>{item.first} + {item.second} = {item.result} ({item.percentage}%)</Text>
+          <View style={{flexDirection: 'row', alignItems: 'center'}}>
+            <CommandButton command={item.first} onPressCommand={onPressCommand} />
+            <Text> + </Text>
+            <CommandButton command={item.second} onPressCommand={onPressCommand} />
+            <Text> = </Text>
+            <CommandButton command={item.result} onPressCommand={onPressCommand} />
+          </View>
+          <Text>
+            {item.first} + {item.second} = {item.result} ({item.percentage}%)
+          </Text>
           <View>
             <View><Text>Shimmering - {group[Crystal.Shimmering]}</Text></View>
             <View><Text>Fleeting - {group[Crystal.Fleeting]}</Text></View>
@@ -31,14 +45,35 @@ export default class RecipeList extends React.Component<RecipeListProps> {
         </View>
       );
     };
+
+    const _renderSectionHeader = (info: {section: SectionListData<any>}) => {
+      return info.section.data.length > 0 ? (
+        
+        <View style={{padding: 10, backgroundColor: 'black'}}>
+          <Text style={{color: 'white'}}>{info.section.title}</Text>
+        </View>
+      ) : null;
+    }
     
     return (
-      <FlatList
-        data={recipes}
-        keyExtractor={item => item.first + ':' + item.second + '=' + item.result}
+      <SectionList
+        sections={[
+          {title: 'Result of...', data: meldFromRecipes},
+          {title: 'Ingredient in...', data: meldToRecipes}
+        ]}
+        keyExtractor={(item, index) => index.toString()}
         renderItem={_renderItem}
+        renderSectionHeader={_renderSectionHeader}
         style={{width: '100%', flexGrow: 1}}
         />
     );
   }
 }
+
+const CommandButton = (props: {command: Command, onPressCommand: (c: Command) => void}) => (
+  <TouchableOpacity
+    onPress={() => props.onPressCommand(props.command)}
+    >
+    <Text style={{color: 'blue'}}>{props.command}</Text>
+  </TouchableOpacity>
+);

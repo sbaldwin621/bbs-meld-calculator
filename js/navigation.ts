@@ -1,24 +1,19 @@
 import { createStackNavigator } from 'react-navigation';
 
 import HomeScreen from './HomeScreen';
-import CharacterScreen from './CharacterScreen';
-import ByIngredientScreen from './ByIngredientScreen';
+import RecipeScreen from './RecipeScreen';
 
 export enum Screen {
   Home = 'Home',
-  Character = 'Character',
-  ByIngredient = 'ByIngredient'
+  Recipe = 'Recipe'
 }
 
 export default createStackNavigator({
   [Screen.Home]: {
     screen: HomeScreen
   },
-  [Screen.Character]: {
-    screen: CharacterScreen
-  },
-  [Screen.ByIngredient]: {
-    screen: ByIngredientScreen
+  [Screen.Recipe]: {
+    screen: RecipeScreen
   }
 }, {
   initialRouteName: Screen.Home
