@@ -14,7 +14,7 @@
     "react-test-renderer": "16.3.1",
     "ts-jest": "^22.4.6",
     "tslib": "^1.9.1",
-    "typescript": "^2.8.3"
+    "typescript": "^3.0.1"
   },
   "main": "./node_modules/react-native-scripts-ts/build/bin/crna-entry.js",
   "scripts": {
@@ -52,6 +52,7 @@
     "mobx": "^5.0.3",
     "react": "16.3.1",
     "react-native": "~0.55.2",
+    "react-native-picker-select": "^4.2.0",
     "react-navigation": "^2.11.2"
   }
 }
