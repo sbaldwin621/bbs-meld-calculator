@@ -179,11 +179,12 @@ export function getRecipesForIngredient(character: Character, ingredient: Comman
   return recipes[character].filter(r => r.first == ingredient || r.second == ingredient);
 }
 
-export function getIngredientsForCharacter(character: Character) : Command[] {
+export function getCommandsForCharacter(character: Character) : Command[] {
   const commandSet = new Set<Command>();
-  for (const {first, second} of recipes[character]) {
+  for (const {first, second, result} of recipes[character]) {
     commandSet.add(first);
     commandSet.add(second);
+    commandSet.add(result);
   }
 
   const commands = Array.from(commandSet);

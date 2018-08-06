@@ -3,7 +3,7 @@ import { View, Text, Picker, StyleSheet, FlatList, ListRenderItemInfo } from 're
 import { NavigationScreenProps, NavigationScreenConfigProps } from 'react-navigation';
 import RNPickerSelect from 'react-native-picker-select';
 
-import { getIngredientsForCharacter, Character, Command, Recipe, getRecipesForIngredient, getRecipesForResult } from './data/commands';
+import { getCommandsForCharacter, Character, Command, Recipe, getRecipesForIngredient, getRecipesForResult } from './data/commands';
 import RecipeList from './RecipeList';
 
 type RecipeScreenProps = NavigationScreenProps<{
@@ -24,7 +24,7 @@ export default class RecipeScreen extends React.Component<RecipeScreenProps, Rec
     super(props, state);
     
     const character = this.props.navigation.getParam('character');
-    const ingredients = getIngredientsForCharacter(character);
+    const ingredients = getCommandsForCharacter(character);
     const pickerItems = ingredients.map(i => ({label: i, value: i}));
 
     this.state = {pickerItems, command: null};
