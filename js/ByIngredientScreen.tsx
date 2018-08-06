@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { View, Text, Picker, StyleSheet, FlatList, ListRenderItemInfo } from 'react-native';
-import { NavigationScreenProps } from 'react-navigation';
+import { NavigationScreenProps, NavigationScreenConfigProps } from 'react-navigation';
 import RNPickerSelect from 'react-native-picker-select';
 
 import { getIngredientsForCharacter, Character, Command, Recipe, getRecipesForIngredient } from './data/commands';
+import RecipeList from './RecipeList';
 
 export interface ByIngredientParams {
   character: Character
@@ -18,6 +19,10 @@ interface ByIngredientState {
 }
 
 export default class ByIngredientScreen extends React.Component<ByIngredientProps, ByIngredientState> {
+  static navigationOptions = (props: NavigationScreenConfigProps) => ({
+    title: 'By Ingredient'
+  })
+
   constructor(props: ByIngredientProps, state: {}) {
     super(props, state);
     
@@ -36,26 +41,17 @@ export default class ByIngredientScreen extends React.Component<ByIngredientProp
   render() {
     const {pickerItems, recipes} = this.state;
 
-    const _renderItem = (info: ListRenderItemInfo<Recipe>) => {
-      const { item } = info;
-      return (
-        <Text>{item.first} + {item.second} = {item.result} ({item.percentage}%)</Text>
-      );
-    };
-
     return (
       <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-        <Text>From Ingredients</Text>
         <RNPickerSelect
           items={pickerItems}
+          placeholder={{label: 'Select a command...'}}
           onValueChange={(value) => this._onPickerChange(value)}
           style={{...pickerStyles}}
           />
-        <FlatList
-          data={recipes}
-          keyExtractor={item => item.first + ':' + item.second + '=' + item.result}
-          renderItem={_renderItem}
-          style={{width: '100%', flexGrow: 1}}
+        <RecipeList
+          style={{width: '100%', flex: 1}}
+          recipes={recipes}
           />
       </View>
     );
