@@ -41,7 +41,7 @@ describe('getRecipesForIngredient', () => {
   it('gets recipes for QuickBlitz', () => {
     const recipesForQuickBlitz = getRecipesForIngredient(Character.Ventus, Command.QuickBlitz);
     const expected: Recipe[] = [
-      {first: Command.QuickBlitz, second: Command.SlotEdge, meldGroup: MeldGroup.O, command: Command.Blitz, upgrade: {command: Command.ArsArcanum, percentage: 90}},
+      {first: Command.QuickBlitz, second: Command.SlotEdge, meldGroup: MeldGroup.O, command: Command.Blitz, upgrade: {command: Command.ArsArcanum, percentage: 10}},
       {first: Command.QuickBlitz, second: Command.SlidingDash, meldGroup: MeldGroup.O, command: Command.StrikeRaid},
       {first: Command.QuickBlitz, second: Command.Poison, meldGroup: MeldGroup.O, command: Command.PoisonEdge, upgrade: {command: Command.BioBarrage, percentage: 5}},
       {first: Command.QuickBlitz, second: Command.Blizzard, meldGroup: MeldGroup.G, command: Command.BlizzardEdge, upgrade: {command: Command.ArsArcanum, percentage: 5}},
