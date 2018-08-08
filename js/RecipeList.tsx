@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { View, ViewProps, StyleSheet, Button, Text, SectionList, ListRenderItemInfo, SectionListData, TouchableOpacity } from 'react-native';
+import { View, ViewProps, StyleSheet, Button, Text, SectionList, ListRenderItemInfo, SectionListData, TouchableOpacity, PickerIOSItem } from 'react-native';
+import { sortBy } from 'lodash';
 
 import { Recipe, Command, getRecipesForIngredient, Character, getRecipesForResult } from './data/commands';
 import { groups, Crystal } from './data/abilities';
@@ -28,11 +29,14 @@ export default class RecipeList extends React.Component<RecipeListProps> {
             <Text> + </Text>
             <CommandButton command={item.second} onPressCommand={onPressCommand} />
             <Text> = </Text>
-            <CommandButton command={item.result} onPressCommand={onPressCommand} />
+            <CommandButton command={item.command} onPressCommand={onPressCommand} />
           </View>
-          <Text>
-            {item.first} + {item.second} = {item.result} ({item.percentage}%)
-          </Text>
+          {item.upgrade != null ? (
+            <View style={{flexDirection: 'row', alignItems: 'center'}}>
+              <Text>Rare Upgrade ({item.upgrade.percentage}%) - </Text>
+              <CommandButton command={item.upgrade.command} onPressCommand={onPressCommand} />
+            </View>
+          ) : null}
           <View>
             <View><Text>Shimmering - {group[Crystal.Shimmering]}</Text></View>
             <View><Text>Fleeting - {group[Crystal.Fleeting]}</Text></View>

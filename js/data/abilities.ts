@@ -99,13 +99,13 @@ const groups = {
   [MeldGroup.F]: createGroup(A.BlizzardBoost,  A.ReloadBoost, A.SecondChance, A.AirComboPlus, A.DamageSyphon, A.HpPrizePlus,    A.LuckyStrike),
   [MeldGroup.G]: createGroup(A.BlizzardScreen, A.AttackHaste, A.LeafBracer,   A.AirComboPlus, A.ItemBoost,    A.HpPrizePlus,    A.LuckBoost),
   [MeldGroup.H]: createGroup(A.BlizzardScreen, A.MagicHaste,  A.ComboFBoost,  A.AirComboPlus, A.ItemBoost,    A.HpPrizePlus,    A.ExpWalker),
-  [MeldGroup.I]: createGroup(A.ThunderBoost,	 A.MagicHaste,  A.ComboFBoost,  A.AirComboPlus, A.HpBoost,      A.TreasureMagnet, A.LinkPrizePlus),
+  [MeldGroup.I]: createGroup(A.ThunderBoost,   A.MagicHaste,  A.ComboFBoost,  A.AirComboPlus, A.HpBoost,      A.TreasureMagnet, A.LinkPrizePlus),
   [MeldGroup.J]: createGroup(A.ThunderBoost,   A.ReloadBoost, A.ComboFBoost,  A.OnceMore,     A.Defender,     A.TreasureMagnet, A.ExpChance),
   [MeldGroup.K]: createGroup(A.ThunderScreen,  A.AttackHaste, A.FinishBoost,  A.ComboPlus,    A.HpBoost,      A.TreasureMagnet, A.LinkPrizePlus),
   [MeldGroup.L]: createGroup(A.ThunderScreen,  A.AttackHaste, A.FinishBoost,  A.ComboPlus,    A.HpBoost,      A.TreasureMagnet, A.LuckyStrike),
   [MeldGroup.M]: createGroup(A.CureBoost,      A.MagicHaste,  A.ComboFBoost,  A.ComboPlus,    A.ItemBoost,    A.TreasureMagnet, A.LuckyStrike),
   [MeldGroup.N]: createGroup(A.CureBoost,      A.ReloadBoost, A.SecondChance, A.ComboPlus,    A.Defender,     A.TreasureMagnet, A.LuckyStrike),
   [MeldGroup.O]: createGroup(A.DarkScreen,     A.AttackHaste, A.FinishBoost,  A.AirComboPlus, A.ItemBoost,    A.TreasureMagnet, A.LuckyStrike),
-  [MeldGroup.P]: createGroup(A.DarkScreen,     A.MagicHaste,	A.ComboFBoost,  A.AirComboPlus, A.ItemBoost,    A.TreasureMagnet, A.ExpWalker),
+  [MeldGroup.P]: createGroup(A.DarkScreen,     A.MagicHaste,  A.ComboFBoost,  A.AirComboPlus, A.ItemBoost,    A.TreasureMagnet, A.ExpWalker),
 };
 export { groups };

@@ -6,8 +6,8 @@ describe('getRecipesForResult', () => {
     const recipesForBlitz = getRecipesForResult(Character.Terra, Command.Blitz);
 
     const expected: Recipe[] = [
-      {first: Command.QuickBlitz, second: Command.SlotEdge, meldGroup: MeldGroup.O, result: Command.Blitz, percentage: 100},
-      {first: Command.StunEdge, second: Command.SlotEdge, meldGroup: MeldGroup.K, result: Command.Blitz, percentage: 100}
+      {first: Command.QuickBlitz, second: Command.SlotEdge, meldGroup: MeldGroup.O, command: Command.Blitz},
+      {first: Command.StunEdge, second: Command.SlotEdge, meldGroup: MeldGroup.K, command: Command.Blitz}
     ];
     expect(recipesForBlitz).toHaveLength(expected.length)
     expect(recipesForBlitz).toEqual(expect.arrayContaining(expected));
@@ -17,15 +17,15 @@ describe('getRecipesForResult', () => {
     const recipesForArsArcanum = getRecipesForResult(Character.Ventus, Command.ArsArcanum);
 
     const expected: Recipe[] = [
-      {first: Command.Blitz, second: Command.AerialSlam, meldGroup: MeldGroup.F, result: Command.ArsArcanum, percentage: 100},
-      {first: Command.QuickBlitz, second: Command.SlotEdge, meldGroup: MeldGroup.O, result: Command.ArsArcanum, percentage: 10},
-      {first: Command.FireStrike, second: Command.Aerora, meldGroup: MeldGroup.C, result: Command.ArsArcanum, percentage: 10},
-      {first: Command.QuickBlitz, second: Command.Blizzard, meldGroup: MeldGroup.G, result: Command.ArsArcanum, percentage: 5},
-      {first: Command.QuickBlitz, second: Command.Blizzara, meldGroup: MeldGroup.H, result: Command.ArsArcanum, percentage: 5},
-      {first: Command.SlidingDash, second: Command.Blizzard, meldGroup: MeldGroup.E, result: Command.ArsArcanum, percentage: 5},
-      {first: Command.SlidingDash, second: Command.Blizzara, meldGroup: MeldGroup.G, result: Command.ArsArcanum, percentage: 5},
-      {first: Command.PoisonEdge, second: Command.Cura, meldGroup: MeldGroup.P, result: Command.ArsArcanum, percentage: 5},
-      {first: Command.BlizzardEdge, second: Command.Cura, meldGroup: MeldGroup.G, result: Command.ArsArcanum, percentage: 5}
+      {first: Command.Blitz, second: Command.AerialSlam, meldGroup: MeldGroup.F, command: Command.ArsArcanum},
+      {first: Command.QuickBlitz, second: Command.SlotEdge, meldGroup: MeldGroup.O, command: Command.Blitz, upgrade: {command: Command.ArsArcanum, percentage: 10}},
+      {first: Command.FireStrike, second: Command.Aerora, meldGroup: MeldGroup.C, command: Command.AerialSlam, upgrade: {command: Command.ArsArcanum, percentage: 10}},
+      {first: Command.QuickBlitz, second: Command.Blizzard, meldGroup: MeldGroup.G, command: Command.BlizzardEdge, upgrade: {command: Command.ArsArcanum, percentage: 5}},
+      {first: Command.QuickBlitz, second: Command.Blizzara, meldGroup: MeldGroup.H, command: Command.BlizzardEdge, upgrade: {command: Command.ArsArcanum, percentage: 5}},
+      {first: Command.SlidingDash, second: Command.Blizzard, meldGroup: MeldGroup.E, command: Command.BlizzardEdge, upgrade: {command: Command.ArsArcanum, percentage: 5}},
+      {first: Command.SlidingDash, second: Command.Blizzara, meldGroup: MeldGroup.G, command: Command.BlizzardEdge, upgrade: {command: Command.ArsArcanum, percentage: 5}},
+      {first: Command.PoisonEdge, second: Command.Cura, meldGroup: MeldGroup.P, command: Command.SlotEdge, upgrade: {command: Command.ArsArcanum, percentage: 5}},
+      {first: Command.BlizzardEdge, second: Command.Cura, meldGroup: MeldGroup.G, command: Command.SlotEdge, upgrade: {command: Command.ArsArcanum, percentage: 5}}
     ];
     expect(recipesForArsArcanum).toHaveLength(expected.length);    
     expect(recipesForArsArcanum).toEqual(expect.arrayContaining(expected));
@@ -40,24 +40,17 @@ describe('getRecipesForResult', () => {
 describe('getRecipesForIngredient', () => {
   it('gets recipes for QuickBlitz', () => {
     const recipesForQuickBlitz = getRecipesForIngredient(Character.Ventus, Command.QuickBlitz);
-    const expected = [
-      {first: Command.QuickBlitz, second: Command.SlotEdge, meldGroup: MeldGroup.O, result: Command.Blitz, percentage: 90},
-      {first: Command.QuickBlitz, second: Command.SlotEdge, meldGroup: MeldGroup.O, result: Command.ArsArcanum, percentage: 10},
-      {first: Command.QuickBlitz, second: Command.SlidingDash, meldGroup: MeldGroup.O, result: Command.StrikeRaid, percentage: 100},
-      {first: Command.QuickBlitz, second: Command.Poison, meldGroup: MeldGroup.O, result: Command.PoisonEdge, percentage: 95},
-      {first: Command.QuickBlitz, second: Command.Poison, meldGroup: MeldGroup.O, result: Command.BioBarrage, percentage: 5},
-      {first: Command.QuickBlitz, second: Command.Blizzard, meldGroup: MeldGroup.G, result: Command.BlizzardEdge, percentage: 95},
-      {first: Command.QuickBlitz, second: Command.Blizzard, meldGroup: MeldGroup.G, result: Command.ArsArcanum, percentage: 5},
-      {first: Command.QuickBlitz, second: Command.Blizzara, meldGroup: MeldGroup.H, result: Command.BlizzardEdge, percentage: 95},
-      {first: Command.QuickBlitz, second: Command.Blizzara, meldGroup: MeldGroup.H, result: Command.ArsArcanum, percentage: 5},
-      {first: Command.QuickBlitz, second: Command.Confuse, meldGroup: MeldGroup.O, result: Command.ConfusionStrike, percentage: 100},
-      {first: Command.QuickBlitz, second: Command.Bind, meldGroup: MeldGroup.K, result: Command.BindingStrike, percentage: 100},
-      {first: Command.QuickBlitz, second: Command.Magnera, meldGroup: MeldGroup.K, result: Command.CollisionMagnet, percentage: 80},
-      {first: Command.QuickBlitz, second: Command.Magnera, meldGroup: MeldGroup.K, result: Command.MagnetSpiral, percentage: 20},
-      {first: Command.QuickBlitz, second: Command.Aero, meldGroup: MeldGroup.G, result: Command.Aerora, percentage: 95},
-      {first: Command.QuickBlitz, second: Command.Aero, meldGroup: MeldGroup.G, result: Command.Tornado, percentage: 5},
-      {first: Command.QuickBlitz, second: Command.Aerora, meldGroup: MeldGroup.O, result: Command.Aeroga, percentage: 90},
-      {first: Command.QuickBlitz, second: Command.Aerora, meldGroup: MeldGroup.O, result: Command.Tornado, percentage: 10},
+    const expected: Recipe[] = [
+      {first: Command.QuickBlitz, second: Command.SlotEdge, meldGroup: MeldGroup.O, command: Command.Blitz, upgrade: {command: Command.ArsArcanum, percentage: 90}},
+      {first: Command.QuickBlitz, second: Command.SlidingDash, meldGroup: MeldGroup.O, command: Command.StrikeRaid},
+      {first: Command.QuickBlitz, second: Command.Poison, meldGroup: MeldGroup.O, command: Command.PoisonEdge, upgrade: {command: Command.BioBarrage, percentage: 5}},
+      {first: Command.QuickBlitz, second: Command.Blizzard, meldGroup: MeldGroup.G, command: Command.BlizzardEdge, upgrade: {command: Command.ArsArcanum, percentage: 5}},
+      {first: Command.QuickBlitz, second: Command.Blizzara, meldGroup: MeldGroup.H, command: Command.BlizzardEdge, upgrade: {command: Command.ArsArcanum, percentage: 5}},
+      {first: Command.QuickBlitz, second: Command.Confuse, meldGroup: MeldGroup.O, command: Command.ConfusionStrike},
+      {first: Command.QuickBlitz, second: Command.Bind, meldGroup: MeldGroup.K, command: Command.BindingStrike},
+      {first: Command.QuickBlitz, second: Command.Magnera, meldGroup: MeldGroup.K, command: Command.CollisionMagnet, upgrade: {command: Command.MagnetSpiral, percentage: 20}},
+      {first: Command.QuickBlitz, second: Command.Aero, meldGroup: MeldGroup.G, command: Command.Aerora, upgrade: {command: Command.Tornado, percentage: 5}},
+      {first: Command.QuickBlitz, second: Command.Aerora, meldGroup: MeldGroup.O, command: Command.Aeroga, upgrade: {command: Command.Tornado, percentage: 10}}
     ];
     expect(recipesForQuickBlitz).toHaveLength(expected.length);
     expect(recipesForQuickBlitz).toEqual(expect.arrayContaining(expected));
