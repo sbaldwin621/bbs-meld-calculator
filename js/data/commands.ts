@@ -580,7 +580,7 @@ addRecipe(Command.GeoImpact, Command.Quake, MeldGroup.B, Command.Meteor, [Charac
 addRecipe(Command.Magnega, Command.Aeroga, MeldGroup.N, Command.Tornado, [Character.Ventus]);
 
 // Transcendence
-addRecipe(Command.MagnetSpiral, Command.ZeroGravira, MeldGroup.J, Command.Transcendence);
+addRecipe(Command.MagnetSpiral, Command.ZeroGraviga, MeldGroup.J, Command.Transcendence);
 
 // Mini
 addRecipe(Command.Magnega, Command.Magnega, MeldGroup.J, Command.Mini);
