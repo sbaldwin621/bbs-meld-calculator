@@ -244,7 +244,7 @@ addRecipe(Command.FireSurge, Command.ZeroGravity, MeldGroup.C, Command.DarkHaze,
 // Sonic Blade
 addRecipe(Command.Blitz, Command.DarkHaze, MeldGroup.D, [Command.SonicBlade, 10, Command.LightningRay], [Character.Terra]);
 addRecipe(Command.Blitz, Command.AirSlide, MeldGroup.N, [Command.SonicBlade, 10, Command.LightningRay]);
-addRecipe(Command.FireDash, Command.ThunderSurge, MeldGroup.N, [Command.SonicBlade, 10, Command.LightningRay]);
+addRecipe(Command.FireDash, Command.ThunderSurge, MeldGroup.K, [Command.SonicBlade, 10, Command.LightningRay]);
 
 // Chaos Blade
 addRecipe(Command.DarkHaze, Command.SonicBlade, MeldGroup.B, [Command.ChaosBlade, 20, Command.ArsSolum], [Character.Terra]);
