@@ -191,10 +191,14 @@ export function getRecipesForIngredient(character: Character, ingredient: Comman
 
 export function getCommandsForCharacter(character: Character) : Command[] {
   const commandSet = new Set<Command>();
-  for (const {first, second, command} of recipes[character]) {
+  for (const {first, second, command, upgrade} of recipes[character]) {
     commandSet.add(first);
     commandSet.add(second);
     commandSet.add(command);
+    
+    if (upgrade != null) {
+      commandSet.add(upgrade.command);
+    }
   }
 
   const commands = Array.from(commandSet);
