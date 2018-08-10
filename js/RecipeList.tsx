@@ -12,9 +12,23 @@ interface RecipeListProps extends ViewProps {
 }
 
 export default class RecipeList extends React.Component<RecipeListProps> {
-  render() {
-    const { character, command, onPressCommand } = this.props;   
+  static getDerivedStateFromProps(props: RecipeListProps) {
+    const { command, character } = props;
+    
+    const meldFromRecipes = command != null ? getRecipesForResult(character, command) : [];
+    const meldToRecipes = command != null ? getRecipesForIngredient(character, command) : [];
 
+    return {meldFromRecipes, meldToRecipes};
+  }
+
+  constructor(props: RecipeListProps) {    
+    super(props);
+
+    this.state = {meldFromRecipes: [], meldToRecipes: []};
+  }
+
+  render() {
+    const { character, command, onPressCommand } = this.props;      
     const meldFromRecipes = command != null ? getRecipesForResult(character, command) : [];
     const meldToRecipes = command != null ? getRecipesForIngredient(character, command) : [];
 
@@ -61,6 +75,7 @@ export default class RecipeList extends React.Component<RecipeListProps> {
     
     return (
       <SectionList
+        key={command || undefined} // Remount when command is changed to instantly "scroll to top"
         sections={[
           {title: 'Result of...', data: meldFromRecipes},
           {title: 'Ingredient in...', data: meldToRecipes}
