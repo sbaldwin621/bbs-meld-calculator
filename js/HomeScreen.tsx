@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, Text, Button } from 'react-native';
+import { View, Text, Button, TouchableHighlight } from 'react-native';
 import { NavigationScreenProps } from 'react-navigation';
 
 import { Screen } from './navigation';
@@ -12,27 +12,36 @@ export default class HomeScreen extends React.Component<NavigationScreenProps<{}
 
   render() {
     return (
-      <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-        <Text>Select Character</Text>
-        <Button
-          title="Terra"
-          onPress={() => this.props.navigation.navigate(Screen.Recipe, {
-            character: Character.Terra
-          })}
-          />
-        <Button
-          title="Ventus"
-          onPress={() => this.props.navigation.navigate(Screen.Recipe, {
-            character: Character.Ventus
-          })}
-          />
-        <Button
-          title="Aqua"
-          onPress={() => this.props.navigation.navigate(Screen.Recipe, {
-            character: Character.Aqua
-          })}
-          />
+      <View>
+        <Header title="Terra" />
+        <NavButton text="By Command" onPress={() => this.props.navigation.navigate(Screen.Recipe, {character: Character.Terra})} />
+        <Separator />
+        <NavButton text="By Ability" onPress={() => this.props.navigation.navigate(Screen.Recipe, {character: Character.Terra})} />
+
+        <Header title="Ventus" />
+        <NavButton text="By Command" onPress={() => this.props.navigation.navigate(Screen.Recipe, {character: Character.Ventus})} />
+        <Separator />
+        <NavButton text="By Ability" onPress={() => this.props.navigation.navigate(Screen.Recipe, {character: Character.Ventus})} />
+
+        <Header title="Aqua" />
+        <NavButton text="By Command" onPress={() => this.props.navigation.navigate(Screen.Recipe, {character: Character.Aqua})} />
+        <Separator />
+        <NavButton text="By Ability" onPress={() => this.props.navigation.navigate(Screen.Recipe, {character: Character.Aqua})} />
       </View>
     );
   }
 }
+
+const Header = (props: {title: string}) => (
+  <View style={{padding: 10}}><Text>{props.title}</Text></View>
+);
+
+const NavButton = (props: {text: string, onPress: () => void}) => (
+  <TouchableHighlight style={{padding: 15, backgroundColor: 'white'}} underlayColor="#c9c9c9" delayPressOut={1000} onPress={props.onPress}>
+    <Text>{props.text}</Text>
+  </TouchableHighlight>
+);
+
+const Separator = () => (
+  <View style={{alignSelf: 'center', height: 1}} />
+)
