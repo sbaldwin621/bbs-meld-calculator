@@ -6,21 +6,21 @@ import RNPickerSelect from 'react-native-picker-select';
 import { getCommandsForCharacter, Character, Command, Recipe, getRecipesForIngredient, getRecipesForResult } from './data/commands';
 import RecipeList from './RecipeList';
 
-type RecipeScreenProps = NavigationScreenProps<{
+type ByCommandScreenProps = NavigationScreenProps<{
   character: Character
 }>;
 
-interface RecipeScreenState {
+interface ByCommandScreenState {
   pickerItems: {label: string, value: Command}[],
   command: Command | null
 }
 
-export default class RecipeScreen extends React.Component<RecipeScreenProps, RecipeScreenState> {
+export default class ByCommandScreen extends React.Component<ByCommandScreenProps, ByCommandScreenState> {
   static navigationOptions = (props: NavigationScreenConfigProps) => ({
     title: props.navigation.getParam('character')
   })
 
-  constructor(props: RecipeScreenProps, state: {}) {
+  constructor(props: ByCommandScreenProps, state: {}) {
     super(props, state);
     
     const character = this.props.navigation.getParam('character');

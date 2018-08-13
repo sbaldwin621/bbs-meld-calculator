@@ -1,10 +1,14 @@
-export enum Ability {
-  // Prize abilities
-  TreasureMagnet = 'Treasure Magnet',
-  HpPrizePlus = 'HP Prize Plus',
-  LinkPrizePlus = 'Link Prize Plus',
-  LuckyStrike = 'Lucky Strike',
+export enum Crystal {
+  Shimmering = 'Shimmering', 
+  Fleeting = 'Fleeting',
+  Pulsing = 'Pulsing',
+  Wellspring = 'Wellspring',
+  Soothing = 'Soothing',
+  Hungry = 'Hungry',
+  Abounding = 'Abounding'
+}
 
+export enum Ability {
   // Status abilities
   HpBoost = 'HP Boost',
   FireBoost = 'Fire Boost',
@@ -23,6 +27,12 @@ export enum Ability {
   ReloadBoost = 'Reload Boost',
   Defender = 'Defender',
 
+  // Prize abilities
+  TreasureMagnet = 'Treasure Magnet',
+  HpPrizePlus = 'HP Prize Plus',
+  LinkPrizePlus = 'Link Prize Plus',
+  LuckyStrike = 'Lucky Strike',
+
   // Support abilities
   ComboPlus = 'Combo Plus',
   AirComboPlus = 'Air Combo Plus',
@@ -35,15 +45,43 @@ export enum Ability {
   LuckBoost = 'Luck Boost'
 }
 
-export enum Crystal {
-  Shimmering = 'Shimmering', 
-  Fleeting = 'Fleeting',
-  Pulsing = 'Pulsing',
-  Wellspring = 'Wellspring',
-  Soothing = 'Soothing',
-  Hungry = 'Hungry',
-  Abounding = 'Abounding'
-}
+const abilities = [
+  // Status abilities
+  {key: Ability.HpBoost, crystal: Crystal.Soothing},
+  {key: Ability.FireBoost, crystal: Crystal.Shimmering},
+  {key: Ability.BlizzardBoost, crystal: Crystal.Shimmering},
+  {key: Ability.ThunderBoost, crystal: Crystal.Shimmering},
+  {key: Ability.CureBoost, crystal: Crystal.Shimmering},
+  {key: Ability.ItemBoost, crystal: Crystal.Soothing},
+  {key: Ability.AttackHaste, crystal: Crystal.Fleeting},
+  {key: Ability.MagicHaste, crystal: Crystal.Fleeting},
+  {key: Ability.ComboFBoost, crystal: Crystal.Pulsing},
+  {key: Ability.FinishBoost, crystal: Crystal.Pulsing},
+  {key: Ability.FireScreen, crystal: Crystal.Shimmering},
+  {key: Ability.BlizzardScreen, crystal: Crystal.Shimmering},
+  {key: Ability.ThunderScreen, crystal: Crystal.Shimmering},
+  {key: Ability.DarkScreen, crystal: Crystal.Shimmering},
+  {key: Ability.ReloadBoost, crystal: Crystal.Fleeting},
+  {key: Ability.Defender, crystal: Crystal.Soothing},
+
+  // Prize abilities
+  {key: Ability.TreasureMagnet, crystal: Crystal.Hungry},
+  {key: Ability.HpPrizePlus, crystal: Crystal.Hungry},
+  {key: Ability.LinkPrizePlus, crystal: Crystal.Abounding},
+  {key: Ability.LuckyStrike, crystal: Crystal.Abounding},
+
+  // Support abilities
+  {key: Ability.ComboPlus, crystal: Crystal.Wellspring},
+  {key: Ability.AirComboPlus, crystal: Crystal.Wellspring},
+  {key: Ability.ExpChance, crystal: Crystal.Abounding},
+  {key: Ability.ExpWalker, crystal: Crystal.Abounding},
+  {key: Ability.DamageSyphon, crystal: Crystal.Soothing},
+  {key: Ability.SecondChance, crystal: Crystal.Pulsing},
+  {key: Ability.OnceMore, crystal: Crystal.Wellspring},
+  {key: Ability.LeafBracer, crystal: Crystal.Pulsing},
+  {key: Ability.LuckBoost, crystal: Crystal.Abounding}
+];
+export { abilities };
 
 export enum MeldGroup {
   A = 'A',

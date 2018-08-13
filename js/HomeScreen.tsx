@@ -14,19 +14,19 @@ export default class HomeScreen extends React.Component<NavigationScreenProps<{}
     return (
       <View>
         <Header title="Terra" />
-        <NavButton text="By Command" onPress={() => this.props.navigation.navigate(Screen.Recipe, {character: Character.Terra})} />
+        <NavButton text="By Command" onPress={() => this.props.navigation.navigate(Screen.ByCommand, {character: Character.Terra})} />
         <Separator />
-        <NavButton text="By Ability" onPress={() => this.props.navigation.navigate(Screen.Recipe, {character: Character.Terra})} />
+        <NavButton text="By Ability" onPress={() => this.props.navigation.navigate(Screen.ByAbility, {character: Character.Terra})} />
 
         <Header title="Ventus" />
-        <NavButton text="By Command" onPress={() => this.props.navigation.navigate(Screen.Recipe, {character: Character.Ventus})} />
+        <NavButton text="By Command" onPress={() => this.props.navigation.navigate(Screen.ByCommand, {character: Character.Ventus})} />
         <Separator />
-        <NavButton text="By Ability" onPress={() => this.props.navigation.navigate(Screen.Recipe, {character: Character.Ventus})} />
+        <NavButton text="By Ability" onPress={() => this.props.navigation.navigate(Screen.ByAbility, {character: Character.Ventus})} />
 
         <Header title="Aqua" />
-        <NavButton text="By Command" onPress={() => this.props.navigation.navigate(Screen.Recipe, {character: Character.Aqua})} />
+        <NavButton text="By Command" onPress={() => this.props.navigation.navigate(Screen.ByCommand, {character: Character.Aqua})} />
         <Separator />
-        <NavButton text="By Ability" onPress={() => this.props.navigation.navigate(Screen.Recipe, {character: Character.Aqua})} />
+        <NavButton text="By Ability" onPress={() => this.props.navigation.navigate(Screen.ByAbility, {character: Character.Aqua})} />
       </View>
     );
   }
